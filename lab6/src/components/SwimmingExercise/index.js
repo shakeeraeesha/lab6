@@ -33,10 +33,16 @@ function LapCounter() {
   };
 
   const formatTime = time => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-  };
+    const milli = time % 1000;
+    const sec = Math.floor(time / 1000) % 60;
+    const min = Math.floor(time / 60000) % 60;
+    
+    <h1>
+    {min < 10 ? "0" + min : min}:
+    {sec < 10 ? "0" + sec : sec}:
+    {milli < 100 ? "0" : ""}{milli < 10 ? "0" : ""}{milli}
+  </h1>
+     };
 
   return (
     <div>
